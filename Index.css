@@ -1,93 +1,161 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VoltAuto | Elétrica Automotiva e Baterias</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-</head>
-<body>
+/* Reset e Base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+}
 
-    <header>
-        <nav class="container">
-            <div class="logo">⚡ Volt<span>Auto</span></div>
-            <ul class="nav-links">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#baterias">Baterias</a></li>
-                <li><a href="#servicos">Serviços</a></li>
-                <li><a href="https://wa.me/seu-numero" class="btn-nav">WhatsApp</a></li>
-            </ul>
-        </nav>
-    </header>
+:root {
+    --azul: #002e5b;
+    --amarelo: #ffcc00;
+    --dark: #121212;
+    --light: #f8f9fa;
+    --wpp: #25d366;
+}
 
-    <section id="home" class="hero">
-        <div class="container">
-            <h1>Bateria acabou? <br><span>Nós vamos até você!</span></h1>
-            <p>Entrega e instalação de baterias em até 30 minutos. Socorro elétrico especializado.</p>
-            <div class="hero-btns">
-                <a href="https://wa.me/seu-numero" class="btn-principal"><i class="fab fa-whatsapp"></i> Pedir Bateria Agora</a>
-            </div>
-        </div>
-    </section>
+html { scroll-behavior: smooth; }
 
-    <div class="container">
-        <section class="simulador">
-            <h3><i class="fas fa-car-battery"></i> Qual a bateria ideal para você?</h3>
-            <div class="simulador-campos">
-                <select id="tipo-veiculo">
-                    <option value="">Selecione o tipo do veículo...</option>
-                    <option value="leve">Carro de Passeio (60Ah)</option>
-                    <option value="pesado">Caminhão / Ônibus (100Ah+)</option>
-                    <option value="moto">Motocicleta (5Ah - 12Ah)</option>
-                </select>
-                <button onclick="consultarBateria()">Consultar</button>
-            </div>
-            <div id="resultado-consulta"></div>
-        </section>
-    </div>
+body { background-color: var(--light); color: var(--dark); }
 
-    <section id="baterias" class="container section-padding">
-        <h2 class="titulo-central">Principais Ofertas</h2>
-        <div class="grid-cards">
-            <div class="card">
-                <div class="badge">Mais Vendida</div>
-                <h3>Bateria Moura</h3>
-                <p class="preco">R$ 449,00</p>
-                <ul>
-                    <li><i class="fas fa-check"></i> 24 meses de garantia</li>
-                    <li><i class="fas fa-check"></i> Instalação Grátis</li>
-                </ul>
-                <a href="https://wa.me/seu-numero" class="btn-card">Comprar</a>
-            </div>
-            <div class="card">
-                <h3>Bateria Heliar</h3>
-                <p class="preco">R$ 419,00</p>
-                <ul>
-                    <li><i class="fas fa-check"></i> Proteção 24h Grátis</li>
-                    <li><i class="fas fa-check"></i> Melhor Tecnologia</li>
-                </ul>
-                <a href="https://wa.me/seu-numero" class="btn-card">Comprar</a>
-            </div>
-            <div class="card">
-                <h3>Bateria Zetta</h3>
-                <p class="preco">R$ 349,00</p>
-                <ul>
-                    <li><i class="fas fa-check"></i> Fabricada pela Moura</li>
-                    <li><i class="fas fa-check"></i> Economia Real</li>
-                </ul>
-                <a href="https://wa.me/seu-numero" class="btn-card">Comprar</a>
-            </div>
-        </div>
-    </section>
+.container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
 
-    <footer>
-        <div class="container">
-            <p>⚡ VoltAuto Elétrica Automotiva &copy; 2026</p>
-            <p>Atendimento 24 horas para emergências.</p>
-        </div>
-    </footer>
+/* Header */
+header {
+    background: var(--azul);
+    padding: 20px 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
 
-    <script src="script.js"></script>
-</body>
-</html>
+nav { display: flex; justify-content: space-between; align-items: center; }
+
+.logo { font-size: 1.8rem; font-weight: 800; color: white; }
+.logo span { color: var(--amarelo); }
+
+.nav-links { display: flex; list-style: none; align-items: center; }
+.nav-links li { margin-left: 25px; }
+.nav-links a { text-decoration: none; color: white; font-weight: 500; transition: 0.3s; }
+.nav-links a:hover { color: var(--amarelo); }
+
+.btn-nav { background: var(--amarelo); color: var(--dark) !important; padding: 10px 20px; border-radius: 5px; font-weight: bold !important; }
+
+/* Hero */
+.hero {
+    background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1597766333694-8ec66299103c?q=80&w=2070');
+    background-size: cover;
+    background-position: center;
+    color: white;
+    padding: 120px 0;
+    text-align: center;
+}
+
+.hero h1 { font-size: 3.5rem; line-height: 1.2; }
+.hero h1 span { color: var(--amarelo); }
+.hero p { font-size: 1.2rem; margin: 20px 0 30px; opacity: 0.9; }
+
+.btn-principal {
+    background: var(--wpp);
+    color: white;
+    padding: 18px 35px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.3rem;
+    transition: 0.3s;
+    display: inline-block;
+}
+
+.btn-principal:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(37, 211, 102, 0.3); }
+
+/* Simulador */
+.simulador {
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    margin-top: -60px;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+    text-align: center;
+}
+
+.simulador-campos {
+    display: flex;
+    gap: 15px;
+    margin-top: 20px;
+    justify-content: center;
+}
+
+#tipo-veiculo { padding: 12px; border: 2px solid #eee; border-radius: 8px; flex: 1; max-width: 400px; }
+
+.simulador button {
+    padding: 12px 30px;
+    background: var(--azul);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+#resultado-consulta { margin-top: 20px; font-weight: 600; color: var(--azul); }
+
+/* Grid de Cards */
+.section-padding { padding: 80px 0; }
+.titulo-central { text-align: center; margin-bottom: 50px; font-size: 2.5rem; }
+
+.grid-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.card {
+    background: white;
+    padding: 40px;
+    border-radius: 15px;
+    text-align: center;
+    position: relative;
+    border: 1px solid #eee;
+    transition: 0.3s;
+}
+
+.card:hover { border-color: var(--amarelo); transform: translateY(-10px); }
+
+.badge {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: var(--amarelo);
+    padding: 5px 12px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    border-radius: 20px;
+}
+
+.preco { font-size: 2rem; font-weight: 800; color: var(--azul); margin: 15px 0; }
+
+.card ul { list-style: none; margin-bottom: 25px; text-align: left; }
+.card ul li { margin-bottom: 10px; color: #666; }
+.card ul i { color: var(--wpp); margin-right: 10px; }
+
+.btn-card {
+    display: block;
+    padding: 12px;
+    background: var(--azul);
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: bold;
+}
+
+/* Footer */
+footer { background: var(--dark); color: white; padding: 50px 0; text-align: center; }
+
+/* Mobile */
+@media (max-width: 768px) {
+    .nav-links { display: none; }
+    .hero h1 { font-size: 2.2rem; }
+    .simulador-campos { flex-direction: column; }
+}
