@@ -27,6 +27,23 @@
             <a href="https://wa.me/seunumeroaqui" class="btn-cta">Chamar no WhatsApp</a>
         </div>
     </section>
+    <section id="consulta" class="container" style="background: #fff; padding: 40px; border-radius: 10px; margin-top: -50px; position: relative; z-index: 10; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
+    <h3>Não sabe qual bateria usar?</h3>
+    <p>Selecione o tipo do seu veículo abaixo:</p>
+    <div style="display: flex; gap: 10px; margin-top: 15px;">
+        <select id="tipo-veiculo" style="padding: 10px; flex: 1; border-radius: 5px; border: 1px solid #ddd;">
+            <option value="">Selecione...</option>
+            <option value="leve">Carro de Passeio</option>
+            <option value="pesado">Caminhão / Ônibus</option>
+            <option value="moto">Motocicleta</option>
+        </select>
+        <button onclick="consultarBateria()" style="background: #002e5b; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer;">Consultar</button>
+    </div>
+    <div id="resultado-consulta" style="margin-top: 15px; font-weight: bold;"></div>
+</section>
+
+<script src="script.js"></script>
+
 
     <section id="baterias" class="container">
         <h2 class="section-title">Nossas Baterias</h2>
