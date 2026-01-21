@@ -3,44 +3,55 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VoltAuto | Elétrica Automotiva e Baterias</title>
+    <title>VoltAuto | Elétrica Automotiva e Baterias 24h</title>
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
 
     <style>
-        /* CSS UNIFICADO E PROFISSIONAL */
+        /* ======================================= */
+        /* CSS UNIFICADO: ESTILOS BASE E ANIMAÇÕES */
+        /* ======================================= */
+
         :root {
             --primary: #002e5b;    /* Azul Profissional */
-            --accent: #ffcc00;     /* Amarelo Energia */
+            --accent: #ffcc00;     /* Amarelo Energia / Destaque */
             --success: #25d366;    /* Verde WhatsApp */
             --dark: #1a1a1a;
             --light: #f4f7f6;
             --white: #ffffff;
+            --gray-text: #555;
         }
 
+        /* Reset Básico e Fontes */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
             font-family: 'Inter', sans-serif;
+            text-rendering: optimizeLegibility;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
         }
+
+        html { scroll-behavior: smooth; } /* Rolagem suave para âncoras */
 
         body {
             background-color: var(--light);
             color: var(--dark);
             line-height: 1.6;
-            overflow-x: hidden;
+            overflow-x: hidden; /* Evita barra de rolagem horizontal indesejada */
         }
 
+        /* Elemento Centralizador e Alinhador de Texto */
         .container {
             max-width: 1100px;
             margin: 0 auto;
             padding: 0 20px;
-            text-align: center; /* Centraliza o conteúdo por padrão */
+            text-align: center; /* Centraliza todo o texto e elementos inline por padrão */
         }
 
-        /* Header */
+        /* --- Header (Barra de Navegação) --- */
         header {
             background: var(--primary);
             padding: 15px 0;
@@ -52,185 +63,309 @@
 
         .nav-content {
             display: flex;
-            justify-content: center; /* Centraliza a logo no mobile */
+            justify-content: center; /* Centraliza a logo */
             align-items: center;
         }
 
         .logo {
-            font-size: 1.8rem;
+            font-size: 1.9rem;
             font-weight: 800;
             color: var(--white);
             text-transform: uppercase;
             letter-spacing: -1px;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.3); /* Sombra sutil na logo */
         }
 
         .logo span { color: var(--accent); }
 
-        /* Hero Section */
+        /* --- Hero Section (Primeira Tela) --- */
         .hero {
-            background: linear-gradient(rgba(0,46,91,0.85), rgba(0,46,91,0.85)), 
+            background: linear-gradient(rgba(0,46,91,0.88), rgba(0,46,91,0.88)), 
                         url('https://images.unsplash.com/photo-1486006920555-c77dcf18193c?auto=format&fit=crop&w=1200&q=80');
             background-size: cover;
             background-position: center;
             color: var(--white);
-            padding: 80px 0 120px;
+            padding: 100px 0 140px; /* Mais padding para destaque */
             text-align: center;
+            overflow: hidden; /* Para as animações não transbordarem */
+            position: relative;
         }
 
         .hero h1 {
-            font-size: 3rem;
-            margin-bottom: 20px;
+            font-size: 3.5rem;
+            margin-bottom: 25px;
             font-weight: 800;
+            line-height: 1.2;
+            text-shadow: 2px 2px 5px rgba(0,0,0,0.4);
+            animation: fadeInTop 1s ease-out forwards; /* Animação de entrada */
+            opacity: 0; /* Esconde antes da animação */
         }
 
         .hero h1 span { color: var(--accent); }
 
         .hero p {
-            font-size: 1.2rem;
-            margin-bottom: 30px;
+            font-size: 1.3rem;
+            margin-bottom: 40px;
             max-width: 700px;
             margin-left: auto;
             margin-right: auto;
-            opacity: 0.9;
+            opacity: 0;
+            animation: fadeIn 1.2s ease-out 0.5s forwards; /* Animação com delay */
         }
 
         .btn-whatsapp {
             background: var(--success);
             color: white;
-            padding: 18px 35px;
+            padding: 18px 38px;
             border-radius: 50px;
             text-decoration: none;
             font-weight: bold;
-            font-size: 1.2rem;
+            font-size: 1.3rem;
             display: inline-flex;
             align-items: center;
-            gap: 10px;
-            transition: transform 0.3s;
-            box-shadow: 0 10px 20px rgba(37, 211, 102, 0.3);
+            gap: 12px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 10px 25px rgba(37, 211, 102, 0.4);
+            animation: pulse 1.5s infinite ease-in-out alternate, fadeInBottom 1s ease-out 0.8s forwards; /* Animação de entrada e pulsação */
+            opacity: 0;
         }
 
-        .btn-whatsapp:hover { transform: scale(1.05); }
+        .btn-whatsapp:hover {
+            transform: scale(1.08);
+            box-shadow: 0 15px 35px rgba(37, 211, 102, 0.6);
+        }
 
-        /* Simulador Flutuante */
+        /* --- Simulador Flutuante --- */
         .simulador-container {
-            margin-top: -60px;
+            margin-top: -80px; /* Sobe mais para sobrepor o Hero */
             padding-bottom: 60px;
         }
 
         .simulador-box {
             background: var(--white);
-            padding: 35px;
-            border-radius: 20px;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
-            max-width: 800px;
+            padding: 40px;
+            border-radius: 25px; /* Bordas mais suaves */
+            box-shadow: 0 20px 45px rgba(0,0,0,0.18); /* Sombra mais intensa */
+            max-width: 850px;
             margin: 0 auto;
+            border: 1px solid #eee;
+            opacity: 0; /* Escondido para animação de scroll */
+            transform: translateY(30px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
         }
+        .simulador-box.fade-in { opacity: 1; transform: translateY(0); } /* Estado animado */
 
-        .simulador-box h3 { margin-bottom: 20px; color: var(--primary); }
+        .simulador-box h3 {
+            margin-bottom: 25px;
+            color: var(--primary);
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
 
         .form-group {
             display: flex;
-            gap: 10px;
+            gap: 15px;
             justify-content: center;
+            max-width: 600px;
+            margin: 0 auto 20px; /* Centraliza e adiciona margem */
         }
 
         select {
-            padding: 12px;
+            padding: 14px;
             border: 2px solid #ddd;
-            border-radius: 10px;
+            border-radius: 12px;
             flex: 1;
-            font-size: 1rem;
+            font-size: 1.05rem;
             outline: none;
+            transition: border-color 0.3s ease;
         }
+
+        select:focus { border-color: var(--accent); }
 
         .btn-consultar {
             background: var(--primary);
             color: white;
             border: none;
-            padding: 12px 25px;
-            border-radius: 10px;
+            padding: 14px 30px;
+            border-radius: 12px;
             cursor: pointer;
             font-weight: bold;
-            transition: 0.3s;
+            font-size: 1.05rem;
+            transition: background 0.3s ease, transform 0.2s ease;
         }
 
-        .btn-consultar:hover { background: var(--dark); }
+        .btn-consultar:hover { background: var(--dark); transform: translateY(-2px); }
 
         #resultado-simulador {
-            margin-top: 20px;
+            margin-top: 25px;
             font-weight: 700;
+            font-size: 1.15rem;
             color: var(--primary);
+            min-height: 30px; /* Garante que não "pule" o layout */
         }
 
-        /* Cards de Baterias */
-        .baterias-section { padding: 40px 0 80px; }
+        /* --- Cards de Baterias --- */
+        .baterias-section { padding: 60px 0 100px; }
 
         .section-title {
-            font-size: 2.2rem;
-            margin-bottom: 50px;
+            font-size: 2.5rem;
+            margin-bottom: 60px;
             position: relative;
+            color: var(--primary);
+            font-weight: 800;
         }
 
         .section-title::after {
             content: '';
             display: block;
-            width: 60px;
-            height: 4px;
+            width: 80px;
+            height: 5px;
             background: var(--accent);
-            margin: 10px auto;
+            margin: 15px auto 0;
+            border-radius: 5px;
         }
 
         .grid-baterias {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
+            gap: 35px; /* Espaçamento maior */
         }
 
         .card {
             background: var(--white);
-            padding: 40px 20px;
+            padding: 40px 25px;
             border-radius: 20px;
             border: 1px solid #eee;
-            transition: 0.3s;
+            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
             display: flex;
             flex-direction: column;
             align-items: center;
+            text-align: center;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+            opacity: 0; /* Escondido para animação de scroll */
+            transform: translateY(30px);
         }
 
-        .card:hover { 
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.05);
+        .card.fade-in { opacity: 1; transform: translateY(0); } /* Estado animado */
+        /* Animação com delay para os cards */
+        .card:nth-child(1).fade-in { transition-delay: 0.1s; }
+        .card:nth-child(2).fade-in { transition-delay: 0.2s; }
+        .card:nth-child(3).fade-in { transition-delay: 0.3s; }
+
+
+        .card:hover {
+            transform: translateY(-12px);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.1);
             border-color: var(--accent);
         }
 
-        .card i { font-size: 3rem; color: var(--primary); margin-bottom: 20px; }
-        .card h4 { font-size: 1.5rem; margin-bottom: 10px; }
-        .card .preco { font-size: 2rem; font-weight: 800; color: var(--primary); margin-bottom: 20px; }
+        .card i { font-size: 3.5rem; color: var(--primary); margin-bottom: 25px; }
+        .card h4 { font-size: 1.6rem; margin-bottom: 10px; color: var(--dark); }
+        .card p { color: var(--gray-text); margin-bottom: 15px; }
+        
+        .card .preco {
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: var(--primary);
+            margin-bottom: 25px;
+            width: 100%; /* Garante alinhamento */
+        }
         
         .btn-comprar {
             background: var(--primary);
             color: white;
             text-decoration: none;
-            padding: 10px 30px;
-            border-radius: 8px;
+            padding: 12px 30px;
+            border-radius: 10px;
             font-weight: bold;
-            width: 100%;
+            width: 80%; /* Botão com largura fixa para padronizar */
+            transition: background 0.3s ease, transform 0.2s ease;
         }
+        .btn-comprar:hover { background: var(--accent); color: var(--dark); transform: translateY(-2px); }
 
+
+        /* --- Footer --- */
         footer {
-            background: var(--primary);
+            background: var(--dark);
             color: white;
-            padding: 40px 0;
-            margin-top: 50px;
+            padding: 50px 0;
+            text-align: center;
+            font-size: 0.95rem;
+        }
+        footer p { margin-bottom: 8px; }
+
+        /* ======================================= */
+        /* KEYFRAMES DAS ANIMAÇÕES CSS */
+        /* ======================================= */
+        @keyframes fadeInTop {
+            from { opacity: 0; transform: translateY(-30px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
-        /* RESPONSIVIDADE (Tudo centralizado no mobile) */
-        @media (max-width: 768px) {
-            .hero h1 { font-size: 2.2rem; }
-            .form-group { flex-direction: column; }
-            .btn-whatsapp { width: 100%; font-size: 1rem; }
-            .simulador-box { width: 95%; padding: 20px; }
+        @keyframes fadeInBottom {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
         }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            100% { transform: scale(1.03); }
+        }
+
+
+        /* ======================================= */
+        /* RESPONSIVIDADE PROFISSIONAL (Mobile First) */
+        /* ======================================= */
+
+        /* Para Tablets e Telas Médias */
+        @media (max-width: 992px) {
+            .hero h1 { font-size: 2.8rem; }
+            .hero p { font-size: 1.1rem; }
+            .btn-whatsapp { padding: 15px 30px; font-size: 1.1rem; }
+            .simulador-box { max-width: 90%; padding: 30px; }
+            .section-title { font-size: 2.2rem; margin-bottom: 40px; }
+        }
+
+        /* Para Smartphones */
+        @media (max-width: 768px) {
+            .hero { padding: 80px 0 100px; }
+            .hero h1 { font-size: 2.2rem; margin-bottom: 20px; }
+            .hero p { font-size: 1rem; margin-bottom: 30px; padding: 0 10px; }
+            .btn-whatsapp { width: 90%; font-size: 1.1rem; margin-left: auto; margin-right: auto; display: flex; justify-content: center; }
+
+            .simulador-container { margin-top: -50px; }
+            .simulador-box { padding: 25px; border-radius: 15px; }
+            .simulador-box h3 { font-size: 1.5rem; margin-bottom: 20px; }
+            .form-group { flex-direction: column; max-width: 100%; }
+            select, .btn-consultar { width: 100%; }
+            #resultado-simulador { font-size: 1rem; }
+
+            .baterias-section { padding: 40px 0 60px; }
+            .section-title { font-size: 2rem; margin-bottom: 30px; }
+            .grid-baterias { grid-template-columns: 1fr; gap: 25px; } /* Uma coluna no mobile */
+            .card { padding: 30px 15px; border-radius: 15px; }
+            .card i { font-size: 3rem; }
+            .card h4 { font-size: 1.4rem; }
+            .card .preco { font-size: 1.8rem; }
+            .btn-comprar { width: 95%; }
+
+            footer { padding: 30px 0; font-size: 0.85rem; }
+        }
+
+        /* Para telas muito pequenas (ex: iPhone 5/SE) */
+        @media (max-width: 480px) {
+            .logo { font-size: 1.6rem; }
+            .hero h1 { font-size: 1.8rem; }
+            .btn-whatsapp { padding: 12px 25px; font-size: 1rem; }
+            .simulador-box h3 { font-size: 1.3rem; }
+            .section-title { font-size: 1.8rem; }
+        }
+
     </style>
 </head>
 <body>
@@ -238,27 +373,27 @@
     <header>
         <div class="container nav-content">
             <div class="logo">⚡ Volt<span>Auto</span></div>
-        </div>
+            </div>
     </header>
 
     <section class="hero">
         <div class="container">
-            <h1>Bateria acabou? <br><span>Resolvemos agora!</span></h1>
-            <p>Socorro elétrico e venda de baterias com entrega e instalação gratuita em toda a região. Atendimento ágil e garantido.</p>
-            <a href="https://wa.me/5500000000000" class="btn-whatsapp">
-                <i class="fab fa-whatsapp"></i> Chamar no WhatsApp
+            <h1>Bateria acabou? <br><span>Resgate elétrico e baterias 24h!</span></h1>
+            <p>Entrega e instalação gratuita de baterias. Especialistas em elétrica automotiva com atendimento rápido e garantido em toda a região.</p>
+            <a href="https://wa.me/5500000000000?text=Ol%C3%A1%2C+preciso+de+socorro+para+meu+carro.+Minha+bateria+acabou!" class="btn-whatsapp">
+                <i class="fab fa-whatsapp"></i> Chamar no WhatsApp Agora
             </a>
         </div>
     </section>
 
     <div class="container simulador-container">
-        <div class="simulador-box">
-            <h3><i class="fas fa-search"></i> Consultar Bateria Ideal</h3>
+        <div class="simulador-box fade-item">
+            <h3><i class="fas fa-search"></i> Encontre a Bateria Ideal para Seu Veículo!</h3>
             <div class="form-group">
                 <select id="veiculo-select">
-                    <option value="">Selecione seu veículo...</option>
-                    <option value="carro">Carro de Passeio (60Ah)</option>
-                    <option value="moto">Moto (5Ah a 12Ah)</option>
+                    <option value="">Selecione o tipo do seu veículo...</option>
+                    <option value="carro">Carro de Passeio</option>
+                    <option value="moto">Motocicleta</option>
                     <option value="caminhao">Caminhão / Linha Pesada</option>
                 </select>
                 <button class="btn-consultar" onclick="calcular()">Consultar</button>
@@ -268,41 +403,45 @@
     </div>
 
     <section class="container baterias-section">
-        <h2 class="section-title">Nossas Melhores Ofertas</h2>
+        <h2 class="section-title">Nossas Baterias em Destaque</h2>
         <div class="grid-baterias">
-            <div class="card">
-                <i class="fas fa-car-battery"></i>
+            <div class="card fade-item">
+                <i class="fas fa-battery-full"></i>
                 <h4>Bateria Moura</h4>
-                <p>Líder em durabilidade</p>
+                <p>A mais vendida! 24 meses de garantia e alta performance.</p>
                 <p class="preco">R$ 449,90</p>
-                <a href="#" class="btn-comprar">Pedir Agora</a>
+                <a href="https://wa.me/5500000000000?text=Ol%C3%A1%2C+gostaria+de+saber+mais+sobre+a+Bateria+Moura." class="btn-comprar"><i class="fab fa-whatsapp"></i> Comprar Agora</a>
             </div>
-            <div class="card">
+            <div class="card fade-item">
                 <i class="fas fa-car-battery"></i>
                 <h4>Bateria Heliar</h4>
-                <p>Tecnologia de ponta</p>
+                <p>Tecnologia Heliar Original: Mais durabilidade para o seu veículo.</p>
                 <p class="preco">R$ 419,90</p>
-                <a href="#" class="btn-comprar">Pedir Agora</a>
+                <a href="https://wa.me/5500000000000?text=Ol%C3%A1%2C+gostaria+de+saber+mais+sobre+a+Bateria+Heliar." class="btn-comprar"><i class="fab fa-whatsapp"></i> Comprar Agora</a>
             </div>
-            <div class="card">
-                <i class="fas fa-car-battery"></i>
+            <div class="card fade-item">
+                <i class="fas fa-bolt"></i>
                 <h4>Bateria Zetta</h4>
-                <p>Melhor custo-benefício</p>
+                <p>Fabricada pela Moura. Excelente custo-benefício e qualidade comprovada.</p>
                 <p class="preco">R$ 349,90</p>
-                <a href="#" class="btn-comprar">Pedir Agora</a>
+                <a href="https://wa.me/5500000000000?text=Ol%C3%A1%2C+gostaria+de+saber+mais+sobre+a+Bateria+Zetta." class="btn-comprar"><i class="fab fa-whatsapp"></i> Comprar Agora</a>
             </div>
         </div>
     </section>
 
     <footer>
         <div class="container">
-            <p><strong>VoltAuto Elétrica Automotiva &copy; 2026</strong></p>
-            <p>Atendimento Emergencial 24h</p>
+            <p><strong>VoltAuto Elétrica & Baterias 24h &copy; 2026</strong></p>
+            <p>Seu carro sempre em movimento. Atendimento rápido e confiável.</p>
         </div>
     </footer>
 
     <script>
-        // JAVASCRIPT UNIFICADO
+        // =======================================
+        // JAVASCRIPT UNIFICADO: LÓGICA E ANIMAÇÕES
+        // =======================================
+
+        // Lógica do Simulador de Bateria
         function calcular() {
             const select = document.getElementById('veiculo-select');
             const resultado = document.getElementById('resultado-simulador');
@@ -310,18 +449,55 @@
 
             const mensagens = {
                 'carro': '🚗 Recomendamos a Bateria de 60Ah. Temos Moura e Heliar com instalação grátis!',
-                'moto': '🏍️ Para sua moto, temos baterias de 5Ah a 12Ah das melhores marcas.',
-                'caminhao': '🚛 Para linha pesada, trabalhamos com baterias de 100Ah a 150Ah.'
+                'moto': '🏍️ Para sua moto, temos baterias de 5Ah a 12Ah das melhores marcas, alta performance!',
+                'caminhao': '🚛 Para linha pesada (caminhões, ônibus), trabalhamos com baterias de 100Ah a 150Ah, alta durabilidade.'
             };
 
             if (escolha === "") {
-                resultado.innerHTML = "⚠️ Por favor, escolha uma opção.";
+                resultado.innerHTML = "⚠️ Por favor, selecione o tipo do seu veículo para consultar.";
                 resultado.style.color = "orange";
             } else {
                 resultado.innerHTML = mensagens[escolha];
                 resultado.style.color = "#002e5b";
             }
         }
+
+        // Animação de entrada ao rolar a página (Fade In on Scroll)
+        document.addEventListener('DOMContentLoaded', () => {
+            const fadeItems = document.querySelectorAll('.fade-item');
+
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.1 // O item aparece quando 10% dele está visível
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('fade-in');
+                        observer.unobserve(entry.target); // Para animar apenas uma vez
+                    }
+                });
+            }, observerOptions);
+
+            fadeItems.forEach(item => {
+                observer.observe(item);
+            });
+        });
+
+        // Configura o link do WhatsApp para cada botão
+        document.addEventListener('DOMContentLoaded', () => {
+            const whatsappNumber = "5511999999999"; // <-- TROQUE PELO NÚMERO REAL COM DDD
+            
+            document.querySelectorAll('.btn-whatsapp, .btn-comprar').forEach(btn => {
+                let initialHref = btn.getAttribute('href');
+                // Substitui apenas se a URL original contiver o placeholder '5500000000000'
+                if (initialHref.includes('5500000000000')) {
+                    btn.setAttribute('href', initialHref.replace('5500000000000', whatsappNumber));
+                }
+            });
+        });
     </script>
 </body>
 </html>
