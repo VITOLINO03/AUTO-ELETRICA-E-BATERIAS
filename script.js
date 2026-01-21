@@ -1,30 +1,41 @@
-// Dados das baterias (isso poderia vir de um banco de dados no futuro)
-const sugestoes = {
-    "leve": "Recomendamos Baterias de 45Ah a 60Ah (Moura ou Heliar).",
-    "pesado": "Recomendamos Baterias de 100Ah a 150Ah (Linha Diesel).",
-    "moto": "Recomendamos Baterias de 5Ah a 12Ah (Route ou Yuasa)."
+// Banco de dados simulado de recomendações
+const recomendacoes = {
+    "leve": "🚗 Ideal para seu carro: Baterias de 60Ah. Temos Moura e Heliar pronta entrega!",
+    "pesado": "🚛 Para linha pesada: Baterias de 100Ah a 150Ah com alta durabilidade.",
+    "moto": "🏍️ Para sua moto: Baterias de 5Ah a 12Ah com tecnologia AGM."
 };
 
+// Função do Simulador
 function consultarBateria() {
-    const tipoVeiculo = document.getElementById("tipo-veiculo").value;
-    const resultadoDiv = document.getElementById("resultado-consulta");
-    
-    if (tipoVeiculo === "") {
-        resultadoDiv.innerHTML = "Por favor, selecione um tipo de veículo.";
-        return;
-    }
+    const select = document.getElementById("tipo-veiculo");
+    const resultado = document.getElementById("resultado-consulta");
+    const valor = select.value;
 
-    const mensagem = sugestoes[tipoVeiculo];
-    resultadoDiv.innerHTML = `<strong>Resultado:</strong> ${mensagem}`;
-    resultadoDiv.style.color = "#002e5b";
+    if (valor === "") {
+        resultado.innerHTML = "❌ Por favor, selecione um tipo de veículo.";
+        resultado.style.color = "red";
+    } else {
+        resultado.innerHTML = recomendacoes[valor];
+        resultado.style.color = "#002e5b";
+        
+        // Efeito de pulo suave no resultado
+        resultado.style.animation = "none";
+        setTimeout(() => {
+            resultado.style.animation = "bounce 0.5s";
+        }, 10);
+    }
 }
 
-// Efeito de scroll suave para os links do menu
+// Suavizar o scroll interno do site
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
         e.preventDefault();
-        document.querySelector(this.getAttribute('href')).scrollIntoView({
-            behavior: 'smooth'
-        });
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+            window.scrollTo({
+                top: target.offsetTop - 80,
+                behavior: 'smooth'
+            });
+        }
     });
 });
