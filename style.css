@@ -159,3 +159,64 @@ footer { background: var(--dark); color: white; padding: 50px 0; text-align: cen
     .hero h1 { font-size: 2.2rem; }
     .simulador-campos { flex-direction: column; }
 }
+
+/* AJUSTES PARA CELULAR E TABLET */
+@media (max-width: 768px) {
+    /* Ajuste do Texto Principal */
+    .hero h1 {
+        font-size: 2.2rem;
+        padding: 0 10px;
+    }
+
+    .hero p {
+        font-size: 1rem;
+        padding: 0 20px;
+    }
+
+    /* Ajuste do Simulador */
+    .simulador {
+        margin-top: -30px; /* Sobe um pouco menos no mobile */
+        padding: 20px;
+        width: 90%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .simulador-campos {
+        flex-direction: column; /* Coloca o select e o botão um em cima do outro */
+    }
+
+    #tipo-veiculo {
+        width: 100%;
+        max-width: none;
+    }
+
+    /* Menu (Esconder links e focar no botão) */
+    .nav-links {
+        display: none; /* Esconde o menu de texto para não embolar */
+    }
+
+    /* Grid de Baterias (Forçar 1 coluna) */
+    .grid-cards {
+        grid-template-columns: 1fr;
+        padding: 0 10px;
+    }
+
+    .card {
+        margin-bottom: 20px;
+    }
+}
+
+/* Ajuste para telas muito pequenas (iPhone SE, etc) */
+@media (max-width: 480px) {
+    .hero h1 {
+        font-size: 1.8rem;
+    }
+    
+    .btn-principal {
+        width: 100%;
+        font-size: 1.1rem;
+        padding: 15px 10px;
+    }
+}
+
