@@ -3,72 +3,325 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Auto Elétrica & Baterias | Resgate Rápido</title>
-    <link rel="stylesheet" href="style.css">
-    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <title>VoltAuto | Elétrica Automotiva e Baterias</title>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        /* CSS UNIFICADO E PROFISSIONAL */
+        :root {
+            --primary: #002e5b;    /* Azul Profissional */
+            --accent: #ffcc00;     /* Amarelo Energia */
+            --success: #25d366;    /* Verde WhatsApp */
+            --dark: #1a1a1a;
+            --light: #f4f7f6;
+            --white: #ffffff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+            text-align: center; /* Centraliza o conteúdo por padrão */
+        }
+
+        /* Header */
+        header {
+            background: var(--primary);
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+
+        .nav-content {
+            display: flex;
+            justify-content: center; /* Centraliza a logo no mobile */
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--white);
+            text-transform: uppercase;
+            letter-spacing: -1px;
+        }
+
+        .logo span { color: var(--accent); }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0,46,91,0.85), rgba(0,46,91,0.85)), 
+                        url('https://images.unsplash.com/photo-1486006920555-c77dcf18193c?auto=format&fit=crop&w=1200&q=80');
+            background-size: cover;
+            background-position: center;
+            color: var(--white);
+            padding: 80px 0 120px;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            font-weight: 800;
+        }
+
+        .hero h1 span { color: var(--accent); }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            opacity: 0.9;
+        }
+
+        .btn-whatsapp {
+            background: var(--success);
+            color: white;
+            padding: 18px 35px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.2rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            transition: transform 0.3s;
+            box-shadow: 0 10px 20px rgba(37, 211, 102, 0.3);
+        }
+
+        .btn-whatsapp:hover { transform: scale(1.05); }
+
+        /* Simulador Flutuante */
+        .simulador-container {
+            margin-top: -60px;
+            padding-bottom: 60px;
+        }
+
+        .simulador-box {
+            background: var(--white);
+            padding: 35px;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .simulador-box h3 { margin-bottom: 20px; color: var(--primary); }
+
+        .form-group {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+        }
+
+        select {
+            padding: 12px;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            flex: 1;
+            font-size: 1rem;
+            outline: none;
+        }
+
+        .btn-consultar {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .btn-consultar:hover { background: var(--dark); }
+
+        #resultado-simulador {
+            margin-top: 20px;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        /* Cards de Baterias */
+        .baterias-section { padding: 40px 0 80px; }
+
+        .section-title {
+            font-size: 2.2rem;
+            margin-bottom: 50px;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 4px;
+            background: var(--accent);
+            margin: 10px auto;
+        }
+
+        .grid-baterias {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .card {
+            background: var(--white);
+            padding: 40px 20px;
+            border-radius: 20px;
+            border: 1px solid #eee;
+            transition: 0.3s;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .card:hover { 
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.05);
+            border-color: var(--accent);
+        }
+
+        .card i { font-size: 3rem; color: var(--primary); margin-bottom: 20px; }
+        .card h4 { font-size: 1.5rem; margin-bottom: 10px; }
+        .card .preco { font-size: 2rem; font-weight: 800; color: var(--primary); margin-bottom: 20px; }
+        
+        .btn-comprar {
+            background: var(--primary);
+            color: white;
+            text-decoration: none;
+            padding: 10px 30px;
+            border-radius: 8px;
+            font-weight: bold;
+            width: 100%;
+        }
+
+        footer {
+            background: var(--primary);
+            color: white;
+            padding: 40px 0;
+            margin-top: 50px;
+        }
+
+        /* RESPONSIVIDADE (Tudo centralizado no mobile) */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.2rem; }
+            .form-group { flex-direction: column; }
+            .btn-whatsapp { width: 100%; font-size: 1rem; }
+            .simulador-box { width: 95%; padding: 20px; }
+        }
+    </style>
 </head>
 <body>
 
     <header>
-        <nav class="container">
+        <div class="container nav-content">
             <div class="logo">⚡ Volt<span>Auto</span></div>
-            <ul>
-                <li><a href="#servicos">Serviços</a></li>
-                <li><a href="#baterias">Baterias</a></li>
-                <li><a href="#contato" class="btn-contato">Falar com Especialista</a></li>
-            </ul>
-        </nav>
+        </div>
     </header>
 
     <section class="hero">
         <div class="container">
-            <h1>Seu carro parou? Nós resolvemos agora!</h1>
-            <p>Especialistas em elétrica automotiva e venda de baterias com entrega e instalação grátis.</p>
-            <a href="https://wa.me/seunumeroaqui" class="btn-cta">Chamar no WhatsApp</a>
+            <h1>Bateria acabou? <br><span>Resolvemos agora!</span></h1>
+            <p>Socorro elétrico e venda de baterias com entrega e instalação gratuita em toda a região. Atendimento ágil e garantido.</p>
+            <a href="https://wa.me/5500000000000" class="btn-whatsapp">
+                <i class="fab fa-whatsapp"></i> Chamar no WhatsApp
+            </a>
         </div>
     </section>
-    <section id="consulta" class="container" style="background: #fff; padding: 40px; border-radius: 10px; margin-top: -50px; position: relative; z-index: 10; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
-    <h3>Não sabe qual bateria usar?</h3>
-    <p>Selecione o tipo do seu veículo abaixo:</p>
-    <div style="display: flex; gap: 10px; margin-top: 15px;">
-        <select id="tipo-veiculo" style="padding: 10px; flex: 1; border-radius: 5px; border: 1px solid #ddd;">
-            <option value="">Selecione...</option>
-            <option value="leve">Carro de Passeio</option>
-            <option value="pesado">Caminhão / Ônibus</option>
-            <option value="moto">Motocicleta</option>
-        </select>
-        <button onclick="consultarBateria()" style="background: #002e5b; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer;">Consultar</button>
+
+    <div class="container simulador-container">
+        <div class="simulador-box">
+            <h3><i class="fas fa-search"></i> Consultar Bateria Ideal</h3>
+            <div class="form-group">
+                <select id="veiculo-select">
+                    <option value="">Selecione seu veículo...</option>
+                    <option value="carro">Carro de Passeio (60Ah)</option>
+                    <option value="moto">Moto (5Ah a 12Ah)</option>
+                    <option value="caminhao">Caminhão / Linha Pesada</option>
+                </select>
+                <button class="btn-consultar" onclick="calcular()">Consultar</button>
+            </div>
+            <div id="resultado-simulador"></div>
+        </div>
     </div>
-    <div id="resultado-consulta" style="margin-top: 15px; font-weight: bold;"></div>
-</section>
 
-<script src="script.js"></script>
-
-
-    <section id="baterias" class="container">
-        <h2 class="section-title">Nossas Baterias</h2>
+    <section class="container baterias-section">
+        <h2 class="section-title">Nossas Melhores Ofertas</h2>
         <div class="grid-baterias">
             <div class="card">
-                <h3>Bateria Moura 60Ah</h3>
-                <p>A partir de R$ 450,00</p>
-                <span>À base de troca</span>
+                <i class="fas fa-car-battery"></i>
+                <h4>Bateria Moura</h4>
+                <p>Líder em durabilidade</p>
+                <p class="preco">R$ 449,90</p>
+                <a href="#" class="btn-comprar">Pedir Agora</a>
             </div>
             <div class="card">
-                <h3>Bateria Heliar 60Ah</h3>
-                <p>A partir de R$ 420,00</p>
-                <span>24 meses de garantia</span>
+                <i class="fas fa-car-battery"></i>
+                <h4>Bateria Heliar</h4>
+                <p>Tecnologia de ponta</p>
+                <p class="preco">R$ 419,90</p>
+                <a href="#" class="btn-comprar">Pedir Agora</a>
             </div>
             <div class="card">
-                <h3>Bateria ACDelco 60Ah</h3>
-                <p>A partir de R$ 380,00</p>
-                <span>Excelente custo-benefício</span>
+                <i class="fas fa-car-battery"></i>
+                <h4>Bateria Zetta</h4>
+                <p>Melhor custo-benefício</p>
+                <p class="preco">R$ 349,90</p>
+                <a href="#" class="btn-comprar">Pedir Agora</a>
             </div>
         </div>
     </section>
 
     <footer>
-        <p>&copy; 2024 VoltAuto Elétrica - Todos os direitos reservados.</p>
+        <div class="container">
+            <p><strong>VoltAuto Elétrica Automotiva &copy; 2026</strong></p>
+            <p>Atendimento Emergencial 24h</p>
+        </div>
     </footer>
 
+    <script>
+        // JAVASCRIPT UNIFICADO
+        function calcular() {
+            const select = document.getElementById('veiculo-select');
+            const resultado = document.getElementById('resultado-simulador');
+            const escolha = select.value;
+
+            const mensagens = {
+                'carro': '🚗 Recomendamos a Bateria de 60Ah. Temos Moura e Heliar com instalação grátis!',
+                'moto': '🏍️ Para sua moto, temos baterias de 5Ah a 12Ah das melhores marcas.',
+                'caminhao': '🚛 Para linha pesada, trabalhamos com baterias de 100Ah a 150Ah.'
+            };
+
+            if (escolha === "") {
+                resultado.innerHTML = "⚠️ Por favor, escolha uma opção.";
+                resultado.style.color = "orange";
+            } else {
+                resultado.innerHTML = mensagens[escolha];
+                resultado.style.color = "#002e5b";
+            }
+        }
+    </script>
 </body>
 </html>
